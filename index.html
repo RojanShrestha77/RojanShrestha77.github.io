@@ -7,14 +7,9 @@
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
   :root {
-    --bg: #0a0a0a;
-    --surface: #111111;
-    --border: #1e1e1e;
-    --accent: #00ff88;
-    --accent2: #0066ff;
-    --text: #f0f0f0;
-    --muted: #555;
-    --mid: #888;
+    --bg: #0a0a0a; --surface: #111111; --border: #1e1e1e;
+    --accent: #00ff88; --accent2: #0066ff;
+    --text: #f0f0f0; --muted: #555; --mid: #888;
   }
   * { margin: 0; padding: 0; box-sizing: border-box; }
   html { scroll-behavior: smooth; }
@@ -50,15 +45,12 @@
   .edu-school { color: var(--accent); font-size: 13px; margin-bottom: 4px; }
   .edu-location { color: var(--muted); font-size: 12px; }
   .edu-year { background: rgba(0,255,136,0.06); border: 1px solid rgba(0,255,136,0.18); color: var(--accent); padding: 4px 12px; border-radius: 2px; font-size: 11px; letter-spacing: 0.1em; white-space: nowrap; }
-  .live-note { font-size: 12px; color: var(--muted); margin-bottom: 24px; display: flex; align-items: center; gap: 8px; }
-  .live-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--accent); animation: pulse 2s ease-in-out infinite; flex-shrink: 0; }
-  @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.4;transform:scale(0.8)} }
-  .lang-grid { display: flex; flex-wrap: wrap; gap: 10px; }
-  .lang-bar { background: var(--surface); border: 1px solid var(--border); border-radius: 4px; padding: 12px 18px; display: flex; align-items: center; gap: 10px; transition: border-color 0.2s, transform 0.2s; }
-  .lang-bar:hover { border-color: var(--accent2); transform: translateY(-2px); }
-  .lang-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
-  .lang-name { font-size: 13px; color: var(--text); }
-  .lang-pct { font-size: 11px; color: var(--muted); }
+  .github-stats-section { margin-bottom: 32px; }
+  .stats-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px; margin-bottom: 24px; }
+  .stats-grid img { width: 100%; border-radius: 4px; border: 1px solid var(--border); transition: border-color 0.2s; display: block; }
+  .stats-grid img:hover { border-color: var(--accent); }
+  .lang-chart { width: 100%; border-radius: 4px; border: 1px solid var(--border); display: block; transition: border-color 0.2s; }
+  .lang-chart:hover { border-color: var(--accent); }
   .projects-grid { display: grid; gap: 14px; }
   .project-card { background: var(--surface); border: 1px solid var(--border); border-radius: 4px; padding: 26px 28px; transition: border-color 0.2s, transform 0.2s; text-decoration: none; color: var(--text); display: block; }
   .project-card:hover { border-color: var(--accent); transform: translateX(4px); }
@@ -70,6 +62,13 @@
   .proj-lang { display: flex; align-items: center; gap: 6px; font-size: 12px; color: var(--mid); }
   .proj-lang-dot { width: 8px; height: 8px; border-radius: 50%; }
   .proj-topic { padding: 3px 10px; background: rgba(0,102,255,0.07); border: 1px solid rgba(0,102,255,0.18); border-radius: 2px; font-size: 11px; color: #4d94ff; }
+  .loading { display: flex; align-items: center; gap: 10px; color: var(--muted); font-size: 13px; padding: 20px 0; }
+  .spinner { width: 14px; height: 14px; border: 2px solid var(--border); border-top-color: var(--accent); border-radius: 50%; animation: spin 0.7s linear infinite; }
+  @keyframes spin { to { transform: rotate(360deg); } }
+  .err { color: var(--muted); font-size: 13px; padding: 12px 0; }
+  .live-note { font-size: 12px; color: var(--muted); margin-bottom: 24px; display: flex; align-items: center; gap: 8px; }
+  .live-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--accent); animation: pulse 2s ease-in-out infinite; flex-shrink: 0; }
+  @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.4;transform:scale(0.8)} }
   .cert-list { display: grid; gap: 12px; }
   .cert-item { background: var(--surface); border: 1px solid var(--border); border-radius: 4px; padding: 18px 24px; display: flex; align-items: center; justify-content: space-between; gap: 16px; transition: border-color 0.2s; }
   .cert-item:hover { border-color: var(--accent); }
@@ -81,15 +80,11 @@
   .contact-item:hover { border-color: var(--accent); transform: translateY(-2px); }
   .contact-label { font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-bottom: 8px; }
   .contact-value { font-family: 'Syne', sans-serif; font-size: 14px; font-weight: 600; color: var(--accent); word-break: break-all; }
-  .loading { display: flex; align-items: center; gap: 10px; color: var(--muted); font-size: 13px; padding: 20px 0; }
-  .spinner { width: 14px; height: 14px; border: 2px solid var(--border); border-top-color: var(--accent); border-radius: 50%; animation: spin 0.7s linear infinite; }
-  @keyframes spin { to { transform: rotate(360deg); } }
-  .err { color: var(--muted); font-size: 13px; padding: 12px 0; }
   footer { padding: 36px 0; display: flex; justify-content: space-between; align-items: center; color: var(--muted); font-size: 12px; }
   @keyframes fadeUp { from{opacity:0;transform:translateY(18px)} to{opacity:1;transform:translateY(0)} }
   .cursor { display: inline-block; width: 7px; height: 18px; background: var(--accent); animation: blink 1s step-end infinite; vertical-align: middle; margin-left: 3px; }
   @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
-  @media(max-width:600px){ .hero h1{letter-spacing:-2px} .edu-card{grid-template-columns:1fr} nav{flex-direction:column;gap:14px} footer{flex-direction:column;gap:8px;text-align:center} }
+  @media(max-width:600px){ .hero h1{letter-spacing:-2px} .edu-card{grid-template-columns:1fr} nav{flex-direction:column;gap:14px} footer{flex-direction:column;gap:8px;text-align:center} .stats-grid{grid-template-columns:1fr} }
 </style>
 </head>
 <body>
@@ -142,19 +137,27 @@
   </section>
 </div>
 
+<!-- SKILLS — GitHub Stats Cards (always work, no CORS) -->
 <div class="container">
   <section id="skills">
     <div class="section-header"><span class="section-num">02</span><h2 class="section-title">Skills & Languages</h2><div class="section-line"></div></div>
-    <div class="live-note"><div class="live-dot"></div>Live — pulled automatically from your GitHub repositories</div>
-    <div id="skills-container"><div class="loading"><div class="spinner"></div>Fetching languages from GitHub...</div></div>
+    <div class="live-note"><div class="live-dot"></div>Live stats pulled directly from your GitHub account</div>
+    <div class="github-stats-section">
+      <div class="stats-grid">
+        <img src="https://github-readme-stats.vercel.app/api?username=RojanShrestha77&show_icons=true&theme=dark&bg_color=111111&title_color=00ff88&icon_color=00ff88&text_color=888888&border_color=1e1e1e&hide_border=false" alt="GitHub Stats" />
+        <img src="https://github-readme-streak-stats.herokuapp.com/?user=RojanShrestha77&theme=dark&background=111111&ring=00ff88&fire=00ff88&currStreakLabel=00ff88&border=1e1e1e&stroke=1e1e1e&sideLabels=888888&dates=555555" alt="GitHub Streak" />
+      </div>
+      <img class="lang-chart" src="https://github-readme-stats.vercel.app/api/top-langs/?username=RojanShrestha77&layout=compact&theme=dark&bg_color=111111&title_color=00ff88&text_color=888888&border_color=1e1e1e&langs_count=8" alt="Top Languages" />
+    </div>
   </section>
 </div>
 
+<!-- PROJECTS — fetched live from GitHub API -->
 <div class="container">
   <section id="projects">
     <div class="section-header"><span class="section-num">03</span><h2 class="section-title">Projects</h2><div class="section-line"></div></div>
-    <div class="live-note"><div class="live-dot"></div>Live — pulled automatically from your GitHub repositories</div>
-    <div id="projects-container"><div class="loading"><div class="spinner"></div>Fetching projects from GitHub...</div></div>
+    <div class="live-note"><div class="live-dot"></div>Live — your public GitHub repositories</div>
+    <div id="projects-container"><div class="loading"><div class="spinner"></div>Fetching from GitHub...</div></div>
   </section>
 </div>
 
@@ -181,68 +184,61 @@
 </div>
 
 <div class="container">
-  <footer><span>Rojan Shrestha © 2025</span><span>Data live from GitHub API</span></footer>
+  <footer><span>Rojan Shrestha © 2025</span><span>Stats live from GitHub</span></footer>
 </div>
 
 <script>
-const GITHUB_USER = 'RojanShrestha77';
-const langColors = {'Python':'#3572A5','JavaScript':'#f1e05a','HTML':'#e34c26','CSS':'#563d7c','TypeScript':'#2b7489','Java':'#b07219','C++':'#f34b7d','C':'#555555','Jupyter Notebook':'#DA5B0B','Shell':'#89e051'};
+const USER = 'RojanShrestha77';
+const langColors = {'Python':'#3572A5','JavaScript':'#f1e05a','HTML':'#e34c26','CSS':'#563d7c','TypeScript':'#2b7489','Java':'#b07219','C++':'#f34b7d','C':'#555','Jupyter Notebook':'#DA5B0B','Shell':'#89e051'};
 function getColor(l){ return langColors[l]||'#666'; }
 
-async function init(){
+async function loadProjects(){
+  const el = document.getElementById('projects-container');
   try {
-    const res = await fetch(`https://api.github.com/users/${GITHUB_USER}/repos?per_page=100&sort=updated`);
-    if(!res.ok) throw new Error();
-    const repos = await res.json();
+    const r = await fetch(`https://api.github.com/users/${USER}/repos?per_page=100&sort=updated`, {
+      headers: { 'Accept': 'application/vnd.github.mercy-preview+json' }
+    });
+    if(!r.ok) throw new Error();
+    const repos = await r.json();
+    const list = repos.filter(r => !r.fork && r.name !== `${USER}.github.io`);
 
-    // PROJECTS
-    const pc = document.getElementById('projects-container');
-    const filtered = repos.filter(r => !r.fork && r.name !== `${GITHUB_USER}.github.io`);
-    if(filtered.length === 0){
-      pc.innerHTML = '<div class="err">No public repositories yet. Push your first project and it will appear here automatically!</div>';
-    } else {
-      pc.innerHTML = '<div class="projects-grid">' + filtered.map(r => {
-        const lang = r.language||'';
-        const desc = r.description||'No description — add one on GitHub!';
-        const topics = (r.topics||[]).slice(0,4);
-        const updated = new Date(r.updated_at).toLocaleDateString('en-US',{month:'short',year:'numeric'});
-        return `<a class="project-card" href="${r.html_url}" target="_blank">
-          <div class="project-top"><div class="project-name">${r.name.replace(/-/g,' ')}</div><div class="project-meta">★ ${r.stargazers_count} · ${updated}</div></div>
-          <div class="project-desc">${desc}</div>
-          <div class="project-footer">
-            ${lang?`<div class="proj-lang"><div class="proj-lang-dot" style="background:${getColor(lang)}"></div>${lang}</div>`:''}
-            ${topics.map(t=>`<span class="proj-topic">${t}</span>`).join('')}
-          </div></a>`;
-      }).join('') + '</div>';
+    if(list.length === 0){
+      el.innerHTML = `<div class="err">No public repositories found yet.<br><br>
+        <strong style="color:var(--text)">To add your Task Manager project:</strong><br>
+        1. Go to github.com → New repository<br>
+        2. Name it: <span style="color:var(--accent)">task-manager</span><br>
+        3. Upload your task_manager.py file<br>
+        4. Refresh this page ✅</div>`;
+      return;
     }
 
-    // SKILLS
-    const sc = document.getElementById('skills-container');
-    const langBytes = {};
-    const langFetches = repos.filter(r=>!r.fork).slice(0,15).map(r=>fetch(r.languages_url).then(x=>x.json()).catch(()=>({})));
-    const results = await Promise.all(langFetches);
-    results.forEach(obj=>{ Object.entries(obj).forEach(([l,b])=>{ langBytes[l]=(langBytes[l]||0)+b; }); });
-
-    if(Object.keys(langBytes).length===0){
-      sc.innerHTML = '<div class="lang-grid"><div class="lang-bar"><div class="lang-dot" style="background:#3572A5"></div><span class="lang-name">Python</span></div><div class="lang-bar"><div class="lang-dot" style="background:#e34c26"></div><span class="lang-name">HTML</span></div><div class="lang-bar"><div class="lang-dot" style="background:#563d7c"></div><span class="lang-name">CSS</span></div></div><p style="margin-top:16px;font-size:12px;color:var(--muted)">Push more repos to GitHub and your real languages will appear here.</p>';
-    } else {
-      const sorted = Object.entries(langBytes).sort((a,b)=>b[1]-a[1]);
-      const total = sorted.reduce((s,[,v])=>s+v,0);
-      sc.innerHTML = '<div class="lang-grid">' + sorted.map(([l,b])=>{
-        const pct = ((b/total)*100).toFixed(1);
-        return `<div class="lang-bar"><div class="lang-dot" style="background:${getColor(l)}"></div><span class="lang-name">${l}</span><span class="lang-pct">${pct}%</span></div>`;
-      }).join('') + '</div><p style="margin-top:16px;font-size:12px;color:var(--muted)">Based on code across all your public GitHub repositories.</p>';
-    }
-  } catch(e){
-    document.getElementById('projects-container').innerHTML='<div class="err">Could not load GitHub data. Make sure your repositories are public.</div>';
-    document.getElementById('skills-container').innerHTML='<div class="err">Could not load language data.</div>';
+    el.innerHTML = '<div class="projects-grid">' + list.map(repo => {
+      const lang = repo.language || '';
+      const desc = repo.description || 'No description yet — add one on GitHub!';
+      const topics = (repo.topics || []).slice(0, 5);
+      const updated = new Date(repo.updated_at).toLocaleDateString('en-US',{month:'short',year:'numeric'});
+      return `<a class="project-card" href="${repo.html_url}" target="_blank">
+        <div class="project-top">
+          <div class="project-name">${repo.name.replace(/-/g,' ')}</div>
+          <div class="project-meta">★ ${repo.stargazers_count} · ${updated}</div>
+        </div>
+        <div class="project-desc">${desc}</div>
+        <div class="project-footer">
+          ${lang ? `<div class="proj-lang"><div class="proj-lang-dot" style="background:${getColor(lang)}"></div>${lang}</div>` : ''}
+          ${topics.map(t=>`<span class="proj-topic">${t}</span>`).join('')}
+        </div>
+      </a>`;
+    }).join('') + '</div>';
+  } catch(e) {
+    el.innerHTML = `<div class="err">Could not load repositories. This can happen due to GitHub rate limits — try refreshing in a minute.</div>`;
   }
 }
 
-init();
+loadProjects();
 
-const obs = new IntersectionObserver(entries=>entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('visible'); }),{threshold:0.08});
-document.querySelectorAll('section').forEach(s=>obs.observe(s));
+// Scroll reveal
+const obs = new IntersectionObserver(entries => entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); }), { threshold: 0.08 });
+document.querySelectorAll('section').forEach(s => obs.observe(s));
 </script>
 </body>
 </html>
