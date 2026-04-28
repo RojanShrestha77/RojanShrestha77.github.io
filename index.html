@@ -3,246 +3,895 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Rojan Shrestha — Software Developer</title>
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<title>Rojan Shrestha — Developer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
-  :root {
-    --bg: #0a0a0a;
-    --surface: #111111;
-    --border: #1e1e1e;
-    --accent: #00ff88;
-    --accent2: #0066ff;
-    --text: #f0f0f0;
-    --muted: #555;
-    --mid: #888;
-  }
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  html { scroll-behavior: smooth; }
-  body { background: var(--bg); color: var(--text); font-family: 'DM Mono', monospace; font-size: 14px; line-height: 1.6; overflow-x: hidden; }
-  body::before { content: ''; position: fixed; inset: 0; background-image: linear-gradient(rgba(0,255,136,0.025) 1px, transparent 1px), linear-gradient(90deg, rgba(0,255,136,0.025) 1px, transparent 1px); background-size: 48px 48px; pointer-events: none; z-index: 0; }
-  .container { max-width: 920px; margin: 0 auto; padding: 0 28px; position: relative; z-index: 1; }
-  nav { padding: 24px 0; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border); position: sticky; top: 0; background: rgba(10,10,10,0.92); backdrop-filter: blur(12px); z-index: 100; }
-  .nav-logo { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 18px; color: var(--accent); }
-  .nav-links { display: flex; gap: 28px; list-style: none; }
-  .nav-links a { color: var(--muted); text-decoration: none; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; transition: color 0.2s; }
-  .nav-links a:hover { color: var(--accent); }
-  .hero { padding: 100px 0 80px; border-bottom: 1px solid var(--border); }
-  .hero-label { font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); margin-bottom: 24px; display: flex; align-items: center; gap: 10px; opacity: 0; animation: fadeUp 0.6s ease forwards 0.1s; }
-  .hero-label::before { content: ''; display: inline-block; width: 24px; height: 1px; background: var(--accent); }
-  .hero h1 { font-family: 'Syne', sans-serif; font-size: clamp(52px, 9vw, 92px); font-weight: 800; line-height: 0.92; letter-spacing: -3px; margin-bottom: 32px; opacity: 0; animation: fadeUp 0.7s ease forwards 0.25s; }
-  .hero h1 .outline { color: transparent; -webkit-text-stroke: 1px rgba(255,255,255,0.15); }
-  .hero-desc { max-width: 540px; color: var(--mid); font-size: 14px; line-height: 1.85; margin-bottom: 40px; opacity: 0; animation: fadeUp 0.7s ease forwards 0.4s; }
-  .hero-meta { display: flex; flex-wrap: wrap; gap: 10px; opacity: 0; animation: fadeUp 0.7s ease forwards 0.5s; }
-  .meta-tag { padding: 6px 14px; border: 1px solid var(--border); border-radius: 2px; font-size: 11px; letter-spacing: 0.08em; color: var(--mid); text-transform: uppercase; transition: all 0.2s; }
-  .meta-tag:hover { border-color: var(--accent); color: var(--accent); }
-  .meta-tag.hi { border-color: rgba(0,255,136,0.3); color: var(--accent); background: rgba(0,255,136,0.05); }
-  section { padding: 72px 0; border-bottom: 1px solid var(--border); opacity: 0; transform: translateY(24px); transition: opacity 0.65s ease, transform 0.65s ease; }
-  section.visible { opacity: 1; transform: translateY(0); }
-  .section-header { display: flex; align-items: center; gap: 16px; margin-bottom: 44px; }
-  .section-num { font-size: 11px; color: var(--accent); letter-spacing: 0.1em; }
-  .section-title { font-family: 'Syne', sans-serif; font-size: 26px; font-weight: 700; letter-spacing: -0.8px; }
-  .section-line { flex: 1; height: 1px; background: var(--border); }
-  .objective-box { background: var(--surface); border: 1px solid var(--border); border-left: 3px solid var(--accent); border-radius: 4px; padding: 28px 32px; font-size: 14px; line-height: 1.95; color: var(--mid); }
-  .objective-box strong { color: var(--text); font-weight: 500; }
-  .edu-card { background: var(--surface); border: 1px solid var(--border); border-radius: 4px; padding: 28px 32px; display: grid; grid-template-columns: 1fr auto; gap: 16px; align-items: start; transition: border-color 0.2s; }
-  .edu-card:hover { border-color: var(--accent); }
-  .edu-degree { font-family: 'Syne', sans-serif; font-size: 19px; font-weight: 700; margin-bottom: 6px; }
-  .edu-school { color: var(--accent); font-size: 13px; margin-bottom: 4px; }
-  .edu-location { color: var(--muted); font-size: 12px; }
-  .edu-year { background: rgba(0,255,136,0.06); border: 1px solid rgba(0,255,136,0.18); color: var(--accent); padding: 4px 12px; border-radius: 2px; font-size: 11px; letter-spacing: 0.1em; white-space: nowrap; }
-  .live-note { font-size: 12px; color: var(--muted); margin-bottom: 24px; display: flex; align-items: center; gap: 8px; }
-  .live-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--accent); animation: pulse 2s ease-in-out infinite; flex-shrink: 0; }
-  @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.4;transform:scale(0.8)} }
-  .lang-grid { display: flex; flex-wrap: wrap; gap: 10px; }
-  .lang-bar { background: var(--surface); border: 1px solid var(--border); border-radius: 4px; padding: 12px 18px; display: flex; align-items: center; gap: 10px; transition: border-color 0.2s, transform 0.2s; }
-  .lang-bar:hover { border-color: var(--accent2); transform: translateY(-2px); }
-  .lang-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
-  .lang-name { font-size: 13px; color: var(--text); }
-  .lang-pct { font-size: 11px; color: var(--muted); }
-  .projects-grid { display: grid; gap: 14px; }
-  .project-card { background: var(--surface); border: 1px solid var(--border); border-radius: 4px; padding: 26px 28px; transition: border-color 0.2s, transform 0.2s; text-decoration: none; color: var(--text); display: block; }
-  .project-card:hover { border-color: var(--accent); transform: translateX(4px); }
-  .project-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 16px; margin-bottom: 10px; }
-  .project-name { font-family: 'Syne', sans-serif; font-size: 17px; font-weight: 700; letter-spacing: -0.4px; }
-  .project-meta { font-size: 11px; color: var(--muted); white-space: nowrap; }
-  .project-desc { font-size: 13px; color: var(--mid); line-height: 1.7; margin-bottom: 14px; }
-  .project-footer { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
-  .proj-lang { display: flex; align-items: center; gap: 6px; font-size: 12px; color: var(--mid); }
-  .proj-lang-dot { width: 8px; height: 8px; border-radius: 50%; }
-  .proj-topic { padding: 3px 10px; background: rgba(0,102,255,0.07); border: 1px solid rgba(0,102,255,0.18); border-radius: 2px; font-size: 11px; color: #4d94ff; }
-  .cert-list { display: grid; gap: 12px; }
-  .cert-item { background: var(--surface); border: 1px solid var(--border); border-radius: 4px; padding: 18px 24px; display: flex; align-items: center; justify-content: space-between; gap: 16px; transition: border-color 0.2s; }
-  .cert-item:hover { border-color: var(--accent); }
-  .cert-name { font-family: 'Syne', sans-serif; font-size: 15px; font-weight: 600; margin-bottom: 4px; }
-  .cert-org { font-size: 12px; color: var(--muted); }
-  .cert-badge { padding: 4px 12px; background: rgba(0,255,136,0.06); border: 1px solid rgba(0,255,136,0.15); border-radius: 2px; font-size: 11px; color: var(--accent); white-space: nowrap; }
-  .contact-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: 12px; }
-  .contact-item { background: var(--surface); border: 1px solid var(--border); border-radius: 4px; padding: 20px; text-decoration: none; color: var(--text); transition: all 0.2s; display: block; }
-  .contact-item:hover { border-color: var(--accent); transform: translateY(-2px); }
-  .contact-label { font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-bottom: 8px; }
-  .contact-value { font-family: 'Syne', sans-serif; font-size: 14px; font-weight: 600; color: var(--accent); word-break: break-all; }
-  .loading { display: flex; align-items: center; gap: 10px; color: var(--muted); font-size: 13px; padding: 20px 0; }
-  .spinner { width: 14px; height: 14px; border: 2px solid var(--border); border-top-color: var(--accent); border-radius: 50%; animation: spin 0.7s linear infinite; }
-  @keyframes spin { to { transform: rotate(360deg); } }
-  .err { color: var(--muted); font-size: 13px; padding: 12px 0; }
-  footer { padding: 36px 0; display: flex; justify-content: space-between; align-items: center; color: var(--muted); font-size: 12px; }
-  @keyframes fadeUp { from{opacity:0;transform:translateY(18px)} to{opacity:1;transform:translateY(0)} }
-  .cursor { display: inline-block; width: 7px; height: 18px; background: var(--accent); animation: blink 1s step-end infinite; vertical-align: middle; margin-left: 3px; }
-  @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
-  @media(max-width:600px){ .hero h1{letter-spacing:-2px} .edu-card{grid-template-columns:1fr} nav{flex-direction:column;gap:14px} footer{flex-direction:column;gap:8px;text-align:center} }
+:root {
+  --bg: #f5f2ee;
+  --surface: #faf8f5;
+  --card: #ffffff;
+  --border: #e2ddd7;
+  --border2: #ccc8c1;
+  --accent: #2563eb;
+  --accent-dim: rgba(37,99,235,0.06);
+  --accent-mid: rgba(37,99,235,0.16);
+  --text: #1a1814;
+  --mid: #6b6560;
+  --muted: #a09890;
+  --tag-bg: #eeebe6;
+}
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--border2); border-radius: 4px; }
+
+/* ── NAV ── */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  height: 58px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 48px;
+  background: rgba(245,242,238,0.94);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--border);
+}
+.nav-logo {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 20px;
+  letter-spacing: 3px;
+  color: var(--text);
+}
+.nav-logo span { color: var(--accent); }
+.nav-links { list-style: none; display: flex; gap: 2px; }
+.nav-links a {
+  padding: 5px 14px;
+  border-radius: 6px;
+  font-size: 13px;
+  color: var(--mid);
+  text-decoration: none;
+  transition: all 0.15s;
+}
+.nav-links a:hover { color: var(--text); background: var(--tag-bg); }
+.nav-pill {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 5px 12px;
+  border-radius: 20px;
+  background: #dcf5e7;
+  border: 1px solid #aae0c0;
+  font-size: 12px;
+  color: #166534;
+  font-weight: 500;
+}
+.nav-dot {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: #16a34a;
+  flex-shrink: 0;
+  animation: pulse 2s ease-in-out infinite;
+}
+@keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.5;transform:scale(0.8)} }
+
+/* ── HERO ── */
+.hero {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 140px 48px 96px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.hero-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 12px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent);
+  font-weight: 500;
+  margin-bottom: 26px;
+  opacity: 0;
+  animation: fadeUp 0.6s ease forwards 0.1s;
+}
+.hero-eyebrow::before { content:''; width:28px; height:1.5px; background:var(--accent); }
+.hero-name {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(68px, 11vw, 118px);
+  line-height: 0.9;
+  letter-spacing: 2px;
+  color: var(--text);
+  margin-bottom: 30px;
+  opacity: 0;
+  animation: fadeUp 0.7s ease forwards 0.22s;
+}
+.hero-name .light { color: var(--muted); }
+.hero-desc {
+  font-family: 'Instrument Serif', serif;
+  font-style: italic;
+  font-size: 19px;
+  color: var(--mid);
+  line-height: 1.75;
+  max-width: 560px;
+  margin-bottom: 36px;
+  opacity: 0;
+  animation: fadeUp 0.7s ease forwards 0.34s;
+}
+.hero-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 40px;
+  opacity: 0;
+  animation: fadeUp 0.7s ease forwards 0.46s;
+}
+.htag {
+  padding: 6px 14px;
+  border-radius: 6px;
+  background: var(--tag-bg);
+  border: 1px solid var(--border);
+  font-size: 12px;
+  color: var(--mid);
+  font-weight: 500;
+  transition: all 0.15s;
+}
+.htag:hover { background: var(--accent-dim); border-color: var(--accent-mid); color: var(--accent); }
+.hero-actions {
+  display: flex;
+  gap: 12px;
+  opacity: 0;
+  animation: fadeUp 0.7s ease forwards 0.56s;
+}
+.btn-main {
+  padding: 11px 26px;
+  background: var(--accent);
+  color: #fff;
+  font-size: 13px;
+  font-weight: 500;
+  text-decoration: none;
+  border-radius: 8px;
+  transition: background 0.15s;
+}
+.btn-main:hover { background: #1d4ed8; }
+.btn-outline {
+  padding: 11px 26px;
+  background: transparent;
+  color: var(--mid);
+  font-size: 13px;
+  text-decoration: none;
+  border-radius: 8px;
+  border: 1px solid var(--border2);
+  transition: all 0.15s;
+}
+.btn-outline:hover { color: var(--text); border-color: var(--text); }
+
+/* ── SECTION ── */
+.section {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 72px 48px;
+  border-top: 1px solid var(--border);
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.55s ease, transform 0.55s ease;
+}
+.section.vis { opacity: 1; transform: translateY(0); }
+.s-label {
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--accent);
+  font-weight: 500;
+  margin-bottom: 8px;
+}
+.s-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 36px;
+  letter-spacing: 2px;
+  color: var(--text);
+  margin-bottom: 36px;
+  line-height: 1;
+}
+
+/* ── ABOUT ── */
+.about-lead {
+  font-size: 15px;
+  color: var(--mid);
+  line-height: 1.9;
+  max-width: 620px;
+  margin-bottom: 36px;
+}
+.about-lead strong { color: var(--text); font-weight: 500; }
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1px;
+  background: var(--border);
+  border-radius: 10px;
+  overflow: hidden;
+}
+.about-cell { background: var(--card); padding: 26px 30px; }
+.acell-label {
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+  font-weight: 500;
+  margin-bottom: 9px;
+}
+.acell-text { font-size: 14px; color: var(--mid); line-height: 1.8; }
+.acell-text strong { color: var(--text); font-weight: 500; }
+
+/* ── STACK ── */
+.stack-table {
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  overflow: hidden;
+}
+.stack-row {
+  display: grid;
+  grid-template-columns: 130px 1fr;
+  border-bottom: 1px solid var(--border);
+  background: var(--card);
+}
+.stack-row:last-child { border-bottom: none; }
+.scat {
+  padding: 16px 22px;
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  font-weight: 500;
+  border-right: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+}
+.schips {
+  padding: 12px 18px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  align-items: center;
+}
+.chip {
+  padding: 5px 12px;
+  border-radius: 6px;
+  background: var(--tag-bg);
+  border: 1px solid var(--border);
+  font-size: 12px;
+  color: var(--mid);
+  font-weight: 500;
+  transition: all 0.15s;
+}
+.chip:hover { background: var(--accent-dim); border-color: var(--accent-mid); color: var(--accent); }
+.chip.learning { background: transparent; border-style: dashed; color: var(--muted); }
+
+.lang-section { margin-top: 32px; }
+.live-label {
+  font-size: 12px;
+  color: var(--muted);
+  margin-bottom: 18px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.live-dot-green {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: #16a34a;
+  animation: pulse 2s ease-in-out infinite;
+  flex-shrink: 0;
+}
+.lang-bars { display: flex; flex-direction: column; gap: 11px; }
+.lang-bar-row {
+  display: grid;
+  grid-template-columns: 110px 1fr 48px;
+  gap: 14px;
+  align-items: center;
+}
+.lbl { font-size: 13px; color: var(--mid); }
+.ltrack { height: 5px; background: var(--border); border-radius: 4px; overflow: hidden; }
+.lfill { height: 100%; border-radius: 4px; width: 0; transition: width 1.1s cubic-bezier(0.4,0,0.2,1); }
+.lpct { font-size: 12px; color: var(--muted); text-align: right; }
+
+/* ── PROJECTS ── */
+.projects-list {
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  overflow: hidden;
+}
+.proj-card {
+  display: block;
+  background: var(--card);
+  padding: 28px 32px;
+  border-bottom: 1px solid var(--border);
+  text-decoration: none;
+  color: var(--text);
+  transition: background 0.15s;
+  position: relative;
+}
+.proj-card:last-child { border-bottom: none; }
+.proj-card:hover { background: var(--surface); }
+.proj-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 16px; margin-bottom: 6px; }
+.proj-name { font-size: 15px; font-weight: 600; color: var(--text); }
+.proj-arrow { font-size: 16px; color: var(--muted); transition: all 0.15s; flex-shrink: 0; }
+.proj-card:hover .proj-arrow { color: var(--accent); transform: translate(2px,-2px); }
+.proj-type {
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  font-weight: 500;
+  margin-bottom: 10px;
+}
+.proj-desc { font-size: 13px; color: var(--mid); line-height: 1.75; margin-bottom: 16px; }
+.proj-foot { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.proj-chip {
+  padding: 4px 10px;
+  border-radius: 5px;
+  background: var(--tag-bg);
+  border: 1px solid var(--border);
+  font-size: 11px;
+  color: var(--mid);
+  font-weight: 500;
+}
+.proj-chip.blue { background: var(--accent-dim); border-color: var(--accent-mid); color: var(--accent); }
+
+/* group header */
+.proj-group-header {
+  padding: 12px 32px;
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--muted);
+  font-weight: 500;
+}
+
+/* ── EDUCATION ── */
+.edu-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 36px 40px;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 32px;
+  align-items: start;
+}
+.edu-school { font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); font-weight: 500; margin-bottom: 10px; }
+.edu-degree { font-family: 'Bebas Neue', sans-serif; font-size: 32px; letter-spacing: 2px; color: var(--text); margin-bottom: 6px; line-height: 1; }
+.edu-partner { font-family: 'Instrument Serif', serif; font-style: italic; font-size: 15px; color: var(--mid); margin-bottom: 16px; }
+.edu-detail { font-size: 13px; color: var(--mid); line-height: 1.75; }
+.edu-year {
+  padding: 8px 18px;
+  border-radius: 8px;
+  background: var(--accent-dim);
+  border: 1px solid var(--accent-mid);
+  font-size: 13px;
+  color: var(--accent);
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+/* ── CERTS ── */
+.cert-list {
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  overflow: hidden;
+}
+.cert-row {
+  background: var(--card);
+  padding: 22px 28px;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  transition: background 0.15s;
+}
+.cert-row:last-child { border-bottom: none; }
+.cert-row:hover { background: var(--surface); }
+.cert-org { font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); font-weight: 500; margin-bottom: 4px; }
+.cert-name { font-size: 15px; font-weight: 600; color: var(--text); margin-bottom: 3px; }
+.cert-sub { font-size: 13px; color: var(--mid); }
+.cbadge {
+  padding: 4px 12px; border-radius: 20px;
+  font-size: 12px; font-weight: 500; white-space: nowrap; flex-shrink: 0;
+}
+.cbadge.green { background: #dcf5e7; border: 1px solid #aae0c0; color: #166534; }
+.cbadge.grey { background: var(--tag-bg); border: 1px solid var(--border2); color: var(--mid); }
+
+/* ── CONTACT ── */
+.contact-wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start; }
+.contact-head {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(40px, 6vw, 64px);
+  letter-spacing: 2px;
+  line-height: 0.95;
+  color: var(--text);
+  margin-bottom: 16px;
+}
+.contact-sub { font-size: 15px; color: var(--mid); line-height: 1.8; }
+.contact-links {
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  overflow: hidden;
+}
+.clink {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px 24px;
+  background: var(--card);
+  border-bottom: 1px solid var(--border);
+  text-decoration: none;
+  color: var(--text);
+  transition: background 0.15s;
+}
+.clink:last-child { border-bottom: none; }
+.clink:hover { background: var(--surface); }
+.ctype { font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); font-weight: 500; margin-bottom: 3px; }
+.cval { font-size: 14px; font-weight: 600; color: var(--text); }
+.carr { color: var(--muted); font-size: 16px; transition: color 0.15s; }
+.clink:hover .carr { color: var(--accent); }
+
+/* ── FOOTER ── */
+footer {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 28px 48px;
+  border-top: 1px solid var(--border);
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+  color: var(--muted);
+}
+
+/* ── LOADING ── */
+.loading-state { display: flex; align-items: center; gap: 10px; color: var(--muted); font-size: 13px; padding: 20px 0; }
+.spinner { width: 14px; height: 14px; border: 2px solid var(--border2); border-top-color: var(--accent); border-radius: 50%; animation: spin 0.65s linear infinite; flex-shrink: 0; }
+@keyframes spin { to { transform: rotate(360deg); } }
+.err-state { color: var(--muted); font-size: 13px; padding: 12px 0; }
+
+@keyframes fadeUp { from{opacity:0;transform:translateY(14px)} to{opacity:1;transform:translateY(0)} }
+
+/* ── MOBILE ── */
+@media(max-width:680px){
+  nav { padding: 0 20px; }
+  .nav-links { display: none; }
+  .hero, .section { padding-left: 24px; padding-right: 24px; }
+  .hero-name { font-size: 64px; }
+  .about-grid, .contact-wrap { grid-template-columns: 1fr; }
+  .edu-card { grid-template-columns: 1fr; }
+  .stack-row { grid-template-columns: 1fr; }
+  .scat { border-right: none; border-bottom: 1px solid var(--border); }
+  footer { flex-direction: column; gap: 6px; text-align: center; padding: 24px; }
+}
 </style>
 </head>
 <body>
 
-<div class="container">
-  <nav>
-    <div class="nav-logo">RS_</div>
-    <ul class="nav-links">
-      <li><a href="#about">About</a></li>
-      <li><a href="#skills">Skills</a></li>
-      <li><a href="#projects">Projects</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
-  </nav>
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">ROJAN<span>.</span></div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#stack">Stack</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#education">Education</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <div class="nav-pill"><div class="nav-dot"></div>Open to work</div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-eyebrow">Full-Stack &amp; Mobile Developer</div>
+  <div class="hero-name">ROJAN<br><span class="light">SHRESTHA</span></div>
+  <div class="hero-desc">Building complete products — Flutter mobile apps, React frontends, and Node.js APIs. Based in Kathmandu, exploring AI &amp; ML.</div>
+  <div class="hero-tags">
+    <span class="htag">Flutter</span>
+    <span class="htag">React / Next.js</span>
+    <span class="htag">Node.js</span>
+    <span class="htag">Python</span>
+    <span class="htag">AI / ML</span>
+    <span class="htag">Kathmandu 🇳🇵</span>
+  </div>
+  <div class="hero-actions">
+    <a href="#projects" class="btn-main">View Projects</a>
+    <a href="https://github.com/RojanShrestha77" target="_blank" class="btn-outline">GitHub ↗</a>
+  </div>
 </div>
 
-<div class="container">
-  <div class="hero" id="about">
-    <div class="hero-label">Open to opportunities</div>
-    <h1>Rojan<br><span class="outline">Shrestha</span><span class="cursor"></span></h1>
-    <p class="hero-desc">BSc Computing student at Softwarica College of IT and E-Commerce, Kathmandu. Passionate about software development, machine learning, and building intelligent systems. Currently learning AI/ML and computer vision through the Institute of Analytics.</p>
-    <div class="hero-meta">
-      <span class="meta-tag hi">Python</span>
-      <span class="meta-tag">Machine Learning</span>
-      <span class="meta-tag">Computer Vision</span>
-      <span class="meta-tag">Data Structures</span>
-      <span class="meta-tag">Kathmandu, Nepal</span>
+<!-- ABOUT -->
+<div class="section" id="about">
+  <div class="s-label">About</div>
+  <div class="s-title">WHO I AM</div>
+  <div class="about-lead">
+    I'm a <strong>BSc Computing student</strong> at Softwarica College of IT &amp; E-Commerce, Kathmandu —
+    in partnership with Coventry University, UK. I build full-stack and mobile apps end-to-end:
+    polished Flutter frontends, Node.js backends, and React web apps. I care about shipping real things cleanly.
+  </div>
+  <div class="about-grid">
+    <div class="about-cell">
+      <div class="acell-label">Currently Building</div>
+      <div class="acell-text">A <strong>Gym Posture Correction App</strong> using MediaPipe, OpenCV, and PyTorch — real-time computer vision for fitness tracking.</div>
+    </div>
+    <div class="about-cell">
+      <div class="acell-label">Currently Learning</div>
+      <div class="acell-text"><strong>AI/ML and deep learning</strong> through the Institute of Analytics — PyTorch, CNNs, and computer vision pipelines.</div>
+    </div>
+    <div class="about-cell">
+      <div class="acell-label">Looking For</div>
+      <div class="acell-text">Internships and junior roles in <strong>software development or mobile engineering</strong>. Open to remote work worldwide.</div>
+    </div>
+    <div class="about-cell">
+      <div class="acell-label">Philosophy</div>
+      <div class="acell-text">Ship early, iterate fast. A <strong>working product with clean code</strong> beats perfect theory every time.</div>
     </div>
   </div>
 </div>
 
-<div class="container">
-  <section id="objective">
-    <div class="section-header"><span class="section-num">00</span><h2 class="section-title">Objective</h2><div class="section-line"></div></div>
-    <div class="objective-box">Motivated <strong>BSc Computing student</strong> at Softwarica College of IT and E-Commerce, seeking opportunities to apply and grow my skills in <strong>software development and machine learning</strong>. Proficient in <strong>Python</strong> with hands-on experience building data structure implementations and algorithmic solutions. Currently expanding expertise in <strong>AI, deep learning, and computer vision</strong> through the Institute of Analytics (IoA). Eager to contribute to innovative development teams, solve real-world problems through code, and grow into a <strong>full-stack AI/ML engineer</strong>.</div>
-  </section>
-</div>
-
-<div class="container">
-  <section id="education">
-    <div class="section-header"><span class="section-num">01</span><h2 class="section-title">Education</h2><div class="section-line"></div></div>
-    <div class="edu-card">
-      <div>
-        <div class="edu-degree">BSc (Hons) Computing</div>
-        <div class="edu-school">Softwarica College of IT and E-Commerce</div>
-        <div class="edu-location">Kathmandu, Nepal · In partnership with Coventry University, UK</div>
+<!-- STACK -->
+<div class="section" id="stack">
+  <div class="s-label">Skills</div>
+  <div class="s-title">TECH STACK</div>
+  <div class="stack-table">
+    <div class="stack-row">
+      <div class="scat">Mobile</div>
+      <div class="schips">
+        <span class="chip">Flutter</span>
+        <span class="chip">Dart</span>
+        <span class="chip">Kotlin</span>
+        <span class="chip">Biometric Auth</span>
       </div>
-      <div class="edu-year">2024 — Present</div>
     </div>
-  </section>
-</div>
-
-<div class="container">
-  <section id="skills">
-    <div class="section-header"><span class="section-num">02</span><h2 class="section-title">Skills & Languages</h2><div class="section-line"></div></div>
-    <div class="live-note"><div class="live-dot"></div>Live — pulled automatically from your GitHub repositories</div>
-    <div id="skills-container"><div class="loading"><div class="spinner"></div>Fetching languages from GitHub...</div></div>
-  </section>
-</div>
-
-<div class="container">
-  <section id="projects">
-    <div class="section-header"><span class="section-num">03</span><h2 class="section-title">Projects</h2><div class="section-line"></div></div>
-    <div class="live-note"><div class="live-dot"></div>Live — pulled automatically from your GitHub repositories</div>
-    <div id="projects-container"><div class="loading"><div class="spinner"></div>Fetching projects from GitHub...</div></div>
-  </section>
-</div>
-
-<div class="container">
-  <section id="certifications">
-    <div class="section-header"><span class="section-num">04</span><h2 class="section-title">Certifications</h2><div class="section-line"></div></div>
-    <div class="cert-list">
-      <div class="cert-item"><div><div class="cert-name">Institute of Analytics — Member</div><div class="cert-org">IoA · Global professional body for data, analytics and AI</div></div><span class="cert-badge">Active 2024</span></div>
-      <div class="cert-item"><div><div class="cert-name">Data Analyst with Python Track</div><div class="cert-org">DataCamp via IoA · Python, NumPy, Pandas, Matplotlib</div></div><span class="cert-badge">In Progress</span></div>
+    <div class="stack-row">
+      <div class="scat">Frontend</div>
+      <div class="schips">
+        <span class="chip">React</span>
+        <span class="chip">Next.js</span>
+        <span class="chip">TypeScript</span>
+        <span class="chip">JavaScript</span>
+        <span class="chip">HTML / CSS</span>
+      </div>
     </div>
-  </section>
-</div>
-
-<div class="container">
-  <section id="contact">
-    <div class="section-header"><span class="section-num">05</span><h2 class="section-title">Contact</h2><div class="section-line"></div></div>
-    <div class="contact-grid">
-      <a class="contact-item" href="https://github.com/RojanShrestha77" target="_blank"><div class="contact-label">GitHub</div><div class="contact-value">RojanShrestha77</div></a>
-      <a class="contact-item" href="https://rojanshrestha77.github.io" target="_blank"><div class="contact-label">Portfolio</div><div class="contact-value">rojanshrestha77.github.io</div></a>
-      <div class="contact-item"><div class="contact-label">Location</div><div class="contact-value">Kathmandu, Nepal</div></div>
-      <div class="contact-item"><div class="contact-label">Degree</div><div class="contact-value">BSc Computing</div></div>
+    <div class="stack-row">
+      <div class="scat">Backend</div>
+      <div class="schips">
+        <span class="chip">Node.js</span>
+        <span class="chip">Express.js</span>
+        <span class="chip">MongoDB</span>
+        <span class="chip">REST APIs</span>
+        <span class="chip">JWT Auth</span>
+      </div>
     </div>
-  </section>
+    <div class="stack-row">
+      <div class="scat">AI / ML</div>
+      <div class="schips">
+        <span class="chip">Python</span>
+        <span class="chip">PyTorch</span>
+        <span class="chip">OpenCV</span>
+        <span class="chip">MediaPipe</span>
+        <span class="chip">NumPy</span>
+        <span class="chip">Pandas</span>
+        <span class="chip learning">Deep Learning ↗</span>
+      </div>
+    </div>
+    <div class="stack-row">
+      <div class="scat">Tools</div>
+      <div class="schips">
+        <span class="chip">Git</span>
+        <span class="chip">GitHub</span>
+        <span class="chip">VS Code</span>
+        <span class="chip">Postman</span>
+        <span class="chip">Android Studio</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="lang-section">
+    <div class="live-label">
+      <span class="live-dot-green"></span>
+      Live language breakdown — pulled from your GitHub
+    </div>
+    <div class="lang-bars" id="lang-container">
+      <div class="loading-state"><div class="spinner"></div>Fetching language data...</div>
+    </div>
+  </div>
 </div>
 
-<div class="container">
-  <footer><span>Rojan Shrestha © 2025</span><span>Data live from GitHub API</span></footer>
+<!-- PROJECTS -->
+<div class="section" id="projects">
+  <div class="s-label">Work</div>
+  <div class="s-title">PROJECTS</div>
+
+  <div class="projects-list">
+
+    <!-- GROUP: HamroDeal Ecosystem -->
+    <div class="proj-group-header">HamroDeal — Full E-Commerce Ecosystem</div>
+
+    <a class="proj-card" href="https://github.com/RojanShrestha77/HamroDeal" target="_blank">
+      <div class="proj-top">
+        <div class="proj-name">HamroDeal — Mobile App</div>
+        <span class="proj-arrow">↗</span>
+      </div>
+      <div class="proj-type">Flutter · Mobile</div>
+      <div class="proj-desc">
+        A full-featured e-commerce mobile application built in Flutter and Dart. Includes product listings,
+        cart management, user authentication, order flow, and a polished UI with 30+ screens across
+        Android and iOS. 99 commits of iterative development.
+      </div>
+      <div class="proj-foot">
+        <span class="proj-chip blue">Flutter</span>
+        <span class="proj-chip blue">Dart</span>
+        <span class="proj-chip">Android</span>
+        <span class="proj-chip">iOS</span>
+        <span class="proj-chip">E-Commerce</span>
+      </div>
+    </a>
+
+    <a class="proj-card" href="https://github.com/RojanShrestha77/HamroDeal_Web" target="_blank">
+      <div class="proj-top">
+        <div class="proj-name">HamroDeal — Web Frontend</div>
+        <span class="proj-arrow">↗</span>
+      </div>
+      <div class="proj-type">Next.js · TypeScript · Web</div>
+      <div class="proj-desc">
+        The web version of HamroDeal, built with Next.js and TypeScript. Mirrors the mobile app's
+        functionality in a responsive web interface — 87 commits, 99.3% TypeScript.
+      </div>
+      <div class="proj-foot">
+        <span class="proj-chip blue">Next.js</span>
+        <span class="proj-chip blue">TypeScript</span>
+        <span class="proj-chip">Responsive</span>
+        <span class="proj-chip">Web</span>
+      </div>
+    </a>
+
+    <a class="proj-card" href="https://github.com/RojanShrestha77/HamroDealApp_backend" target="_blank">
+      <div class="proj-top">
+        <div class="proj-name">HamroDeal — Backend API</div>
+        <span class="proj-arrow">↗</span>
+      </div>
+      <div class="proj-type">Node.js · Express · MongoDB</div>
+      <div class="proj-desc">
+        Production-grade REST API powering the HamroDeal ecosystem. Features JWT authentication,
+        bcrypt password hashing, rate limiting (100 req/15min), XSS &amp; NoSQL injection prevention,
+        Helmet security headers, Multer file uploads, and Redis caching. Full MVC architecture with
+        controllers, models, middleware, and routes.
+      </div>
+      <div class="proj-foot">
+        <span class="proj-chip blue">Node.js</span>
+        <span class="proj-chip blue">Express.js</span>
+        <span class="proj-chip blue">MongoDB</span>
+        <span class="proj-chip">JWT</span>
+        <span class="proj-chip">Redis</span>
+        <span class="proj-chip">REST API</span>
+      </div>
+    </a>
+
+    <!-- GROUP: Connectify -->
+    <div class="proj-group-header">Connectify — Social Networking Platform</div>
+
+    <a class="proj-card" href="https://github.com/RojanShrestha77/connectify_frontendgithub" target="_blank">
+      <div class="proj-top">
+        <div class="proj-name">Connectify — Frontend</div>
+        <span class="proj-arrow">↗</span>
+      </div>
+      <div class="proj-type">React · JavaScript · CSS</div>
+      <div class="proj-desc">
+        Frontend for Connectify, a social networking web application. Built with React and custom CSS —
+        30 commits, 67.4% JavaScript and 31.6% CSS. User feeds, profiles, and real-time interactions.
+      </div>
+      <div class="proj-foot">
+        <span class="proj-chip blue">React</span>
+        <span class="proj-chip blue">JavaScript</span>
+        <span class="proj-chip">CSS</span>
+        <span class="proj-chip">Social App</span>
+      </div>
+    </a>
+
+    <!-- GROUP: Mobile Experiments -->
+    <div class="proj-group-header">Mobile & AI Experiments</div>
+
+    <a class="proj-card" href="https://github.com/RojanShrestha77/Flutter_Biometrics_Authentication" target="_blank">
+      <div class="proj-top">
+        <div class="proj-name">Flutter Biometrics Authentication</div>
+        <span class="proj-arrow">↗</span>
+      </div>
+      <div class="proj-type">Flutter · Dart · iOS & Android</div>
+      <div class="proj-desc">
+        A Flutter app implementing biometric authentication — fingerprint and Face ID login —
+        using the local_auth package. Supports both Android (Kotlin) and iOS (Swift) native integrations.
+      </div>
+      <div class="proj-foot">
+        <span class="proj-chip blue">Flutter</span>
+        <span class="proj-chip blue">Dart</span>
+        <span class="proj-chip">Swift</span>
+        <span class="proj-chip">Kotlin</span>
+        <span class="proj-chip">Biometrics</span>
+        <span class="proj-chip">Security</span>
+      </div>
+    </a>
+
+    <a class="proj-card" href="https://github.com/RojanShrestha77/project_cv" target="_blank">
+      <div class="proj-top">
+        <div class="proj-name">Gym Posture Correction App</div>
+        <span class="proj-arrow">↗</span>
+      </div>
+      <div class="proj-type">Python · Computer Vision · AI/ML</div>
+      <div class="proj-desc">
+        Real-time gym posture correction system using MediaPipe for pose estimation and OpenCV for
+        video processing. Detects incorrect exercise form and provides live feedback. Built as part of
+        the Institute of Analytics AI/ML learning track. Currently in active development.
+      </div>
+      <div class="proj-foot">
+        <span class="proj-chip blue">Python</span>
+        <span class="proj-chip blue">MediaPipe</span>
+        <span class="proj-chip blue">OpenCV</span>
+        <span class="proj-chip">PyTorch</span>
+        <span class="proj-chip">Computer Vision</span>
+        <span class="proj-chip">In Progress</span>
+      </div>
+    </a>
+
+  </div>
 </div>
+
+<!-- EDUCATION -->
+<div class="section" id="education">
+  <div class="s-label">Education</div>
+  <div class="s-title">BACKGROUND</div>
+  <div class="edu-card">
+    <div>
+      <div class="edu-school">Softwarica College of IT &amp; E-Commerce</div>
+      <div class="edu-degree">BSC (HONS) COMPUTING</div>
+      <div class="edu-partner">In partnership with Coventry University, United Kingdom</div>
+      <div class="edu-detail">Kathmandu, Nepal · Studying software engineering, algorithms, data structures, and systems design across a four-year honours programme.</div>
+    </div>
+    <div><div class="edu-year">2024 — Present</div></div>
+  </div>
+</div>
+
+<!-- CERTS -->
+<div class="section" id="certifications">
+  <div class="s-label">Certifications</div>
+  <div class="s-title">CREDENTIALS</div>
+  <div class="cert-list">
+    <div class="cert-row">
+      <div>
+        <div class="cert-org">Institute of Analytics (IoA)</div>
+        <div class="cert-name">Professional Member</div>
+        <div class="cert-sub">Global professional body for data, analytics and AI practitioners</div>
+      </div>
+      <span class="cbadge green">Active · 2024</span>
+    </div>
+    <div class="cert-row">
+      <div>
+        <div class="cert-org">DataCamp via IoA</div>
+        <div class="cert-name">Data Analyst with Python</div>
+        <div class="cert-sub">Python · NumPy · Pandas · Matplotlib · Statistical Analysis</div>
+      </div>
+      <span class="cbadge grey">In Progress</span>
+    </div>
+    <div class="cert-row">
+      <div>
+        <div class="cert-org">Self-Directed</div>
+        <div class="cert-name">Computer Vision &amp; Deep Learning</div>
+        <div class="cert-sub">OpenCV · MediaPipe · PyTorch · CNN Architecture</div>
+      </div>
+      <span class="cbadge grey">In Progress</span>
+    </div>
+  </div>
+</div>
+
+<!-- CONTACT -->
+<div class="section" id="contact">
+  <div class="s-label">Contact</div>
+  <div class="contact-wrap">
+    <div>
+      <div class="contact-head">LET'S BUILD SOMETHING.</div>
+      <div class="contact-sub">Open to internships, junior developer roles, and freelance projects. Based in Kathmandu — available remotely worldwide.</div>
+    </div>
+    <div class="contact-links">
+      <a class="clink" href="https://github.com/RojanShrestha77" target="_blank">
+        <div><div class="ctype">GitHub</div><div class="cval">RojanShrestha77</div></div>
+        <span class="carr">↗</span>
+      </a>
+      <a class="clink" href="https://rojanshrestha77.github.io" target="_blank">
+        <div><div class="ctype">Portfolio</div><div class="cval">rojanshrestha77.github.io</div></div>
+        <span class="carr">↗</span>
+      </a>
+      <div class="clink">
+        <div><div class="ctype">Location</div><div class="cval">Kathmandu, Nepal 🇳🇵</div></div>
+      </div>
+      <div class="clink">
+        <div><div class="ctype">Status</div><div class="cval">Open to Opportunities</div></div>
+        <div class="nav-dot"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <span>Rojan Shrestha © 2025</span>
+  <span>Language data live from GitHub API</span>
+</footer>
 
 <script>
-const GITHUB_USER = 'RojanShrestha77';
-const langColors = {'Python':'#3572A5','JavaScript':'#f1e05a','HTML':'#e34c26','CSS':'#563d7c','TypeScript':'#2b7489','Java':'#b07219','C++':'#f34b7d','C':'#555555','Jupyter Notebook':'#DA5B0B','Shell':'#89e051'};
-function getColor(l){ return langColors[l]||'#666'; }
+const GH = 'RojanShrestha77';
+const COLORS = {
+  'Dart':'#00B4AB','JavaScript':'#f1e05a','Python':'#3572A5',
+  'HTML':'#e34c26','CSS':'#563d7c','TypeScript':'#2b7489',
+  'Java':'#b07219','Kotlin':'#A97BFF','Shell':'#89e051',
+  'Swift':'#F05138','C++':'#f34b7d','Jupyter Notebook':'#DA5B0B'
+};
+const gc = l => COLORS[l] || '#999';
 
-async function init(){
+async function loadLangs() {
   try {
-    const res = await fetch(`https://api.github.com/users/${GITHUB_USER}/repos?per_page=100&sort=updated`);
-    if(!res.ok) throw new Error();
+    const res = await fetch(`https://api.github.com/users/${GH}/repos?per_page=100&sort=updated`);
+    if (!res.ok) throw new Error();
     const repos = await res.json();
+    const mine = repos.filter(r => !r.fork && r.name !== `${GH}.github.io`);
 
-    // PROJECTS
-    const pc = document.getElementById('projects-container');
-    const filtered = repos.filter(r => !r.fork && r.name !== `${GITHUB_USER}.github.io`);
-    if(filtered.length === 0){
-      pc.innerHTML = '<div class="err">No public repositories yet. Push your first project and it will appear here automatically!</div>';
-    } else {
-      pc.innerHTML = '<div class="projects-grid">' + filtered.map(r => {
-        const lang = r.language||'';
-        const desc = r.description||'No description — add one on GitHub!';
-        const topics = (r.topics||[]).slice(0,4);
-        const updated = new Date(r.updated_at).toLocaleDateString('en-US',{month:'short',year:'numeric'});
-        return `<a class="project-card" href="${r.html_url}" target="_blank">
-          <div class="project-top"><div class="project-name">${r.name.replace(/-/g,' ')}</div><div class="project-meta">★ ${r.stargazers_count} · ${updated}</div></div>
-          <div class="project-desc">${desc}</div>
-          <div class="project-footer">
-            ${lang?`<div class="proj-lang"><div class="proj-lang-dot" style="background:${getColor(lang)}"></div>${lang}</div>`:''}
-            ${topics.map(t=>`<span class="proj-topic">${t}</span>`).join('')}
-          </div></a>`;
-      }).join('') + '</div>';
+    const fetches = mine.slice(0,20).map(r => fetch(r.languages_url).then(x=>x.json()).catch(()=>({})));
+    const all = await Promise.all(fetches);
+    const bytes = {};
+    all.forEach(obj => Object.entries(obj).forEach(([l,b]) => { bytes[l]=(bytes[l]||0)+b; }));
+
+    const lc = document.getElementById('lang-container');
+    if (!Object.keys(bytes).length) {
+      lc.innerHTML = '<div class="err-state">Push more code to GitHub and language stats will appear here.</div>';
+      return;
     }
 
-    // SKILLS
-    const sc = document.getElementById('skills-container');
-    const langBytes = {};
-    const langFetches = repos.filter(r=>!r.fork).slice(0,15).map(r=>fetch(r.languages_url).then(x=>x.json()).catch(()=>({})));
-    const results = await Promise.all(langFetches);
-    results.forEach(obj=>{ Object.entries(obj).forEach(([l,b])=>{ langBytes[l]=(langBytes[l]||0)+b; }); });
-
-    if(Object.keys(langBytes).length===0){
-      sc.innerHTML = '<div class="lang-grid"><div class="lang-bar"><div class="lang-dot" style="background:#3572A5"></div><span class="lang-name">Python</span></div><div class="lang-bar"><div class="lang-dot" style="background:#e34c26"></div><span class="lang-name">HTML</span></div><div class="lang-bar"><div class="lang-dot" style="background:#563d7c"></div><span class="lang-name">CSS</span></div></div><p style="margin-top:16px;font-size:12px;color:var(--muted)">Push more repos to GitHub and your real languages will appear here.</p>';
-    } else {
-      const sorted = Object.entries(langBytes).sort((a,b)=>b[1]-a[1]);
-      const total = sorted.reduce((s,[,v])=>s+v,0);
-      sc.innerHTML = '<div class="lang-grid">' + sorted.map(([l,b])=>{
-        const pct = ((b/total)*100).toFixed(1);
-        return `<div class="lang-bar"><div class="lang-dot" style="background:${getColor(l)}"></div><span class="lang-name">${l}</span><span class="lang-pct">${pct}%</span></div>`;
-      }).join('') + '</div><p style="margin-top:16px;font-size:12px;color:var(--muted)">Based on code across all your public GitHub repositories.</p>';
-    }
-  } catch(e){
-    document.getElementById('projects-container').innerHTML='<div class="err">Could not load GitHub data. Make sure your repositories are public.</div>';
-    document.getElementById('skills-container').innerHTML='<div class="err">Could not load language data.</div>';
+    const sorted = Object.entries(bytes).sort((a,b)=>b[1]-a[1]);
+    const total = sorted.reduce((s,[,v])=>s+v,0);
+    lc.innerHTML = sorted.map(([l,b]) => {
+      const pct = ((b/total)*100).toFixed(1);
+      return `<div class="lang-bar-row">
+        <div class="lbl">${l}</div>
+        <div class="ltrack"><div class="lfill" data-pct="${pct}" style="background:${gc(l)}"></div></div>
+        <div class="lpct">${pct}%</div>
+      </div>`;
+    }).join('');
+    setTimeout(() => {
+      document.querySelectorAll('.lfill').forEach(el => { el.style.width = el.dataset.pct + '%'; });
+    }, 300);
+  } catch(e) {
+    document.getElementById('lang-container').innerHTML = '<div class="err-state">Language data unavailable.</div>';
   }
 }
 
-init();
+loadLangs();
 
-const obs = new IntersectionObserver(entries=>entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('visible'); }),{threshold:0.08});
-document.querySelectorAll('section').forEach(s=>obs.observe(s));
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('vis'); });
+}, { threshold: 0.06 });
+document.querySelectorAll('.section').forEach(s => obs.observe(s));
 </script>
 </body>
 </html>
