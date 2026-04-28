@@ -1,165 +1,248 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Rojan Shrestha | Portfolio</title>
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
-
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: "Inter", sans-serif;
-    }
-
-    body {
-      background: #0d1117;
-      color: white;
-      line-height: 1.6;
-    }
-
-    header {
-      text-align: center;
-      padding: 80px 20px;
-    }
-
-    h1 {
-      font-size: 3rem;
-      color: #00f7a8;
-    }
-
-    p {
-      color: #aaa;
-      margin-top: 10px;
-    }
-
-    .btn {
-      margin-top: 20px;
-      display: inline-block;
-      padding: 10px 20px;
-      background: #00f7a8;
-      color: black;
-      text-decoration: none;
-      border-radius: 8px;
-      font-weight: bold;
-    }
-
-    section {
-      max-width: 900px;
-      margin: auto;
-      padding: 60px 20px;
-    }
-
-    h2 {
-      margin-bottom: 20px;
-      color: #00f7a8;
-    }
-
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 15px;
-    }
-
-    .card {
-      background: #161b22;
-      padding: 20px;
-      border-radius: 12px;
-      border: 1px solid #222;
-      transition: 0.3s;
-    }
-
-    .card:hover {
-      transform: translateY(-5px);
-      border-color: #00f7a8;
-    }
-
-    .projects .card p {
-      color: #aaa;
-      margin-top: 10px;
-    }
-
-    footer {
-      text-align: center;
-      padding: 40px;
-      color: #777;
-    }
-
-    a {
-      color: #00f7a8;
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rojan Shrestha — Software Developer</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0a0a0a;
+    --surface: #111111;
+    --border: #1e1e1e;
+    --accent: #00ff88;
+    --accent2: #0066ff;
+    --text: #f0f0f0;
+    --muted: #555;
+    --mid: #888;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { background: var(--bg); color: var(--text); font-family: 'DM Mono', monospace; font-size: 14px; line-height: 1.6; overflow-x: hidden; }
+  body::before { content: ''; position: fixed; inset: 0; background-image: linear-gradient(rgba(0,255,136,0.025) 1px, transparent 1px), linear-gradient(90deg, rgba(0,255,136,0.025) 1px, transparent 1px); background-size: 48px 48px; pointer-events: none; z-index: 0; }
+  .container { max-width: 920px; margin: 0 auto; padding: 0 28px; position: relative; z-index: 1; }
+  nav { padding: 24px 0; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border); position: sticky; top: 0; background: rgba(10,10,10,0.92); backdrop-filter: blur(12px); z-index: 100; }
+  .nav-logo { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 18px; color: var(--accent); }
+  .nav-links { display: flex; gap: 28px; list-style: none; }
+  .nav-links a { color: var(--muted); text-decoration: none; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--accent); }
+  .hero { padding: 100px 0 80px; border-bottom: 1px solid var(--border); }
+  .hero-label { font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); margin-bottom: 24px; display: flex; align-items: center; gap: 10px; opacity: 0; animation: fadeUp 0.6s ease forwards 0.1s; }
+  .hero-label::before { content: ''; display: inline-block; width: 24px; height: 1px; background: var(--accent); }
+  .hero h1 { font-family: 'Syne', sans-serif; font-size: clamp(52px, 9vw, 92px); font-weight: 800; line-height: 0.92; letter-spacing: -3px; margin-bottom: 32px; opacity: 0; animation: fadeUp 0.7s ease forwards 0.25s; }
+  .hero h1 .outline { color: transparent; -webkit-text-stroke: 1px rgba(255,255,255,0.15); }
+  .hero-desc { max-width: 540px; color: var(--mid); font-size: 14px; line-height: 1.85; margin-bottom: 40px; opacity: 0; animation: fadeUp 0.7s ease forwards 0.4s; }
+  .hero-meta { display: flex; flex-wrap: wrap; gap: 10px; opacity: 0; animation: fadeUp 0.7s ease forwards 0.5s; }
+  .meta-tag { padding: 6px 14px; border: 1px solid var(--border); border-radius: 2px; font-size: 11px; letter-spacing: 0.08em; color: var(--mid); text-transform: uppercase; transition: all 0.2s; }
+  .meta-tag:hover { border-color: var(--accent); color: var(--accent); }
+  .meta-tag.hi { border-color: rgba(0,255,136,0.3); color: var(--accent); background: rgba(0,255,136,0.05); }
+  section { padding: 72px 0; border-bottom: 1px solid var(--border); opacity: 0; transform: translateY(24px); transition: opacity 0.65s ease, transform 0.65s ease; }
+  section.visible { opacity: 1; transform: translateY(0); }
+  .section-header { display: flex; align-items: center; gap: 16px; margin-bottom: 44px; }
+  .section-num { font-size: 11px; color: var(--accent); letter-spacing: 0.1em; }
+  .section-title { font-family: 'Syne', sans-serif; font-size: 26px; font-weight: 700; letter-spacing: -0.8px; }
+  .section-line { flex: 1; height: 1px; background: var(--border); }
+  .objective-box { background: var(--surface); border: 1px solid var(--border); border-left: 3px solid var(--accent); border-radius: 4px; padding: 28px 32px; font-size: 14px; line-height: 1.95; color: var(--mid); }
+  .objective-box strong { color: var(--text); font-weight: 500; }
+  .edu-card { background: var(--surface); border: 1px solid var(--border); border-radius: 4px; padding: 28px 32px; display: grid; grid-template-columns: 1fr auto; gap: 16px; align-items: start; transition: border-color 0.2s; }
+  .edu-card:hover { border-color: var(--accent); }
+  .edu-degree { font-family: 'Syne', sans-serif; font-size: 19px; font-weight: 700; margin-bottom: 6px; }
+  .edu-school { color: var(--accent); font-size: 13px; margin-bottom: 4px; }
+  .edu-location { color: var(--muted); font-size: 12px; }
+  .edu-year { background: rgba(0,255,136,0.06); border: 1px solid rgba(0,255,136,0.18); color: var(--accent); padding: 4px 12px; border-radius: 2px; font-size: 11px; letter-spacing: 0.1em; white-space: nowrap; }
+  .live-note { font-size: 12px; color: var(--muted); margin-bottom: 24px; display: flex; align-items: center; gap: 8px; }
+  .live-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--accent); animation: pulse 2s ease-in-out infinite; flex-shrink: 0; }
+  @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.4;transform:scale(0.8)} }
+  .lang-grid { display: flex; flex-wrap: wrap; gap: 10px; }
+  .lang-bar { background: var(--surface); border: 1px solid var(--border); border-radius: 4px; padding: 12px 18px; display: flex; align-items: center; gap: 10px; transition: border-color 0.2s, transform 0.2s; }
+  .lang-bar:hover { border-color: var(--accent2); transform: translateY(-2px); }
+  .lang-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+  .lang-name { font-size: 13px; color: var(--text); }
+  .lang-pct { font-size: 11px; color: var(--muted); }
+  .projects-grid { display: grid; gap: 14px; }
+  .project-card { background: var(--surface); border: 1px solid var(--border); border-radius: 4px; padding: 26px 28px; transition: border-color 0.2s, transform 0.2s; text-decoration: none; color: var(--text); display: block; }
+  .project-card:hover { border-color: var(--accent); transform: translateX(4px); }
+  .project-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 16px; margin-bottom: 10px; }
+  .project-name { font-family: 'Syne', sans-serif; font-size: 17px; font-weight: 700; letter-spacing: -0.4px; }
+  .project-meta { font-size: 11px; color: var(--muted); white-space: nowrap; }
+  .project-desc { font-size: 13px; color: var(--mid); line-height: 1.7; margin-bottom: 14px; }
+  .project-footer { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+  .proj-lang { display: flex; align-items: center; gap: 6px; font-size: 12px; color: var(--mid); }
+  .proj-lang-dot { width: 8px; height: 8px; border-radius: 50%; }
+  .proj-topic { padding: 3px 10px; background: rgba(0,102,255,0.07); border: 1px solid rgba(0,102,255,0.18); border-radius: 2px; font-size: 11px; color: #4d94ff; }
+  .cert-list { display: grid; gap: 12px; }
+  .cert-item { background: var(--surface); border: 1px solid var(--border); border-radius: 4px; padding: 18px 24px; display: flex; align-items: center; justify-content: space-between; gap: 16px; transition: border-color 0.2s; }
+  .cert-item:hover { border-color: var(--accent); }
+  .cert-name { font-family: 'Syne', sans-serif; font-size: 15px; font-weight: 600; margin-bottom: 4px; }
+  .cert-org { font-size: 12px; color: var(--muted); }
+  .cert-badge { padding: 4px 12px; background: rgba(0,255,136,0.06); border: 1px solid rgba(0,255,136,0.15); border-radius: 2px; font-size: 11px; color: var(--accent); white-space: nowrap; }
+  .contact-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: 12px; }
+  .contact-item { background: var(--surface); border: 1px solid var(--border); border-radius: 4px; padding: 20px; text-decoration: none; color: var(--text); transition: all 0.2s; display: block; }
+  .contact-item:hover { border-color: var(--accent); transform: translateY(-2px); }
+  .contact-label { font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-bottom: 8px; }
+  .contact-value { font-family: 'Syne', sans-serif; font-size: 14px; font-weight: 600; color: var(--accent); word-break: break-all; }
+  .loading { display: flex; align-items: center; gap: 10px; color: var(--muted); font-size: 13px; padding: 20px 0; }
+  .spinner { width: 14px; height: 14px; border: 2px solid var(--border); border-top-color: var(--accent); border-radius: 50%; animation: spin 0.7s linear infinite; }
+  @keyframes spin { to { transform: rotate(360deg); } }
+  .err { color: var(--muted); font-size: 13px; padding: 12px 0; }
+  footer { padding: 36px 0; display: flex; justify-content: space-between; align-items: center; color: var(--muted); font-size: 12px; }
+  @keyframes fadeUp { from{opacity:0;transform:translateY(18px)} to{opacity:1;transform:translateY(0)} }
+  .cursor { display: inline-block; width: 7px; height: 18px; background: var(--accent); animation: blink 1s step-end infinite; vertical-align: middle; margin-left: 3px; }
+  @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
+  @media(max-width:600px){ .hero h1{letter-spacing:-2px} .edu-card{grid-template-columns:1fr} nav{flex-direction:column;gap:14px} footer{flex-direction:column;gap:8px;text-align:center} }
+</style>
 </head>
-
 <body>
 
-  <!-- HERO -->
-  <header>
-    <h1>Rojan Shrestha</h1>
-    <p>Full-Stack Developer • Flutter Dev • AI/ML Enthusiast</p>
-    <a class="btn" href="#projects">View Projects</a>
-  </header>
+<div class="container">
+  <nav>
+    <div class="nav-logo">RS_</div>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+</div>
 
-  <!-- ABOUT -->
-  <section>
-    <h2>About Me</h2>
-    <p>
-      I’m a developer from Kathmandu, Nepal passionate about building full-stack web apps,
-      mobile apps with Flutter, and exploring AI/ML technologies.
-    </p>
+<div class="container">
+  <div class="hero" id="about">
+    <div class="hero-label">Open to opportunities</div>
+    <h1>Rojan<br><span class="outline">Shrestha</span><span class="cursor"></span></h1>
+    <p class="hero-desc">BSc Computing student at Softwarica College of IT and E-Commerce, Kathmandu. Passionate about software development, machine learning, and building intelligent systems. Currently learning AI/ML and computer vision through the Institute of Analytics.</p>
+    <div class="hero-meta">
+      <span class="meta-tag hi">Python</span>
+      <span class="meta-tag">Machine Learning</span>
+      <span class="meta-tag">Computer Vision</span>
+      <span class="meta-tag">Data Structures</span>
+      <span class="meta-tag">Kathmandu, Nepal</span>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <section id="objective">
+    <div class="section-header"><span class="section-num">00</span><h2 class="section-title">Objective</h2><div class="section-line"></div></div>
+    <div class="objective-box">Motivated <strong>BSc Computing student</strong> at Softwarica College of IT and E-Commerce, seeking opportunities to apply and grow my skills in <strong>software development and machine learning</strong>. Proficient in <strong>Python</strong> with hands-on experience building data structure implementations and algorithmic solutions. Currently expanding expertise in <strong>AI, deep learning, and computer vision</strong> through the Institute of Analytics (IoA). Eager to contribute to innovative development teams, solve real-world problems through code, and grow into a <strong>full-stack AI/ML engineer</strong>.</div>
   </section>
+</div>
 
-  <!-- SKILLS -->
-  <section>
-    <h2>Tech Stack</h2>
-    <div class="grid">
-      <div class="card">React / Next.js</div>
-      <div class="card">Flutter</div>
-      <div class="card">Node.js</div>
-      <div class="card">Python</div>
-      <div class="card">TypeScript</div>
-      <div class="card">MongoDB</div>
+<div class="container">
+  <section id="education">
+    <div class="section-header"><span class="section-num">01</span><h2 class="section-title">Education</h2><div class="section-line"></div></div>
+    <div class="edu-card">
+      <div>
+        <div class="edu-degree">BSc (Hons) Computing</div>
+        <div class="edu-school">Softwarica College of IT and E-Commerce</div>
+        <div class="edu-location">Kathmandu, Nepal · In partnership with Coventry University, UK</div>
+      </div>
+      <div class="edu-year">2024 — Present</div>
     </div>
   </section>
+</div>
 
-  <!-- PROJECTS -->
+<div class="container">
+  <section id="skills">
+    <div class="section-header"><span class="section-num">02</span><h2 class="section-title">Skills & Languages</h2><div class="section-line"></div></div>
+    <div class="live-note"><div class="live-dot"></div>Live — pulled automatically from your GitHub repositories</div>
+    <div id="skills-container"><div class="loading"><div class="spinner"></div>Fetching languages from GitHub...</div></div>
+  </section>
+</div>
+
+<div class="container">
   <section id="projects">
-    <h2>Projects</h2>
-    <div class="grid projects">
+    <div class="section-header"><span class="section-num">03</span><h2 class="section-title">Projects</h2><div class="section-line"></div></div>
+    <div class="live-note"><div class="live-dot"></div>Live — pulled automatically from your GitHub repositories</div>
+    <div id="projects-container"><div class="loading"><div class="spinner"></div>Fetching projects from GitHub...</div></div>
+  </section>
+</div>
 
-      <div class="card">
-        <h3>HamroDeal</h3>
-        <p>E-commerce platform built with Flutter + Next.js</p>
-      </div>
-
-      <div class="card">
-        <h3>Gym AI Posture</h3>
-        <p>AI system for real-time posture correction</p>
-      </div>
-
-      <div class="card">
-        <h3>Connectify</h3>
-        <p>Social media web app using React & Node.js</p>
-      </div>
-
+<div class="container">
+  <section id="certifications">
+    <div class="section-header"><span class="section-num">04</span><h2 class="section-title">Certifications</h2><div class="section-line"></div></div>
+    <div class="cert-list">
+      <div class="cert-item"><div><div class="cert-name">Institute of Analytics — Member</div><div class="cert-org">IoA · Global professional body for data, analytics and AI</div></div><span class="cert-badge">Active 2024</span></div>
+      <div class="cert-item"><div><div class="cert-name">Data Analyst with Python Track</div><div class="cert-org">DataCamp via IoA · Python, NumPy, Pandas, Matplotlib</div></div><span class="cert-badge">In Progress</span></div>
     </div>
   </section>
+</div>
 
-  <!-- CONTACT -->
-  <section>
-    <h2>Contact</h2>
-    <p>Email: <a href="mailto:rojan@example.com">rojan@example.com</a></p>
-    <p>GitHub: <a href="https://github.com/RojanShrestha77">RojanShrestha77</a></p>
-    <p>LinkedIn: <a href="#">My LinkedIn</a></p>
+<div class="container">
+  <section id="contact">
+    <div class="section-header"><span class="section-num">05</span><h2 class="section-title">Contact</h2><div class="section-line"></div></div>
+    <div class="contact-grid">
+      <a class="contact-item" href="https://github.com/RojanShrestha77" target="_blank"><div class="contact-label">GitHub</div><div class="contact-value">RojanShrestha77</div></a>
+      <a class="contact-item" href="https://rojanshrestha77.github.io" target="_blank"><div class="contact-label">Portfolio</div><div class="contact-value">rojanshrestha77.github.io</div></a>
+      <div class="contact-item"><div class="contact-label">Location</div><div class="contact-value">Kathmandu, Nepal</div></div>
+      <div class="contact-item"><div class="contact-label">Degree</div><div class="contact-value">BSc Computing</div></div>
+    </div>
   </section>
+</div>
 
-  <footer>
-    © 2026 Rojan Shrestha • Built with ❤️ in Nepal
-  </footer>
+<div class="container">
+  <footer><span>Rojan Shrestha © 2025</span><span>Data live from GitHub API</span></footer>
+</div>
 
+<script>
+const GITHUB_USER = 'RojanShrestha77';
+const langColors = {'Python':'#3572A5','JavaScript':'#f1e05a','HTML':'#e34c26','CSS':'#563d7c','TypeScript':'#2b7489','Java':'#b07219','C++':'#f34b7d','C':'#555555','Jupyter Notebook':'#DA5B0B','Shell':'#89e051'};
+function getColor(l){ return langColors[l]||'#666'; }
+
+async function init(){
+  try {
+    const res = await fetch(`https://api.github.com/users/${GITHUB_USER}/repos?per_page=100&sort=updated`);
+    if(!res.ok) throw new Error();
+    const repos = await res.json();
+
+    // PROJECTS
+    const pc = document.getElementById('projects-container');
+    const filtered = repos.filter(r => !r.fork && r.name !== `${GITHUB_USER}.github.io`);
+    if(filtered.length === 0){
+      pc.innerHTML = '<div class="err">No public repositories yet. Push your first project and it will appear here automatically!</div>';
+    } else {
+      pc.innerHTML = '<div class="projects-grid">' + filtered.map(r => {
+        const lang = r.language||'';
+        const desc = r.description||'No description — add one on GitHub!';
+        const topics = (r.topics||[]).slice(0,4);
+        const updated = new Date(r.updated_at).toLocaleDateString('en-US',{month:'short',year:'numeric'});
+        return `<a class="project-card" href="${r.html_url}" target="_blank">
+          <div class="project-top"><div class="project-name">${r.name.replace(/-/g,' ')}</div><div class="project-meta">★ ${r.stargazers_count} · ${updated}</div></div>
+          <div class="project-desc">${desc}</div>
+          <div class="project-footer">
+            ${lang?`<div class="proj-lang"><div class="proj-lang-dot" style="background:${getColor(lang)}"></div>${lang}</div>`:''}
+            ${topics.map(t=>`<span class="proj-topic">${t}</span>`).join('')}
+          </div></a>`;
+      }).join('') + '</div>';
+    }
+
+    // SKILLS
+    const sc = document.getElementById('skills-container');
+    const langBytes = {};
+    const langFetches = repos.filter(r=>!r.fork).slice(0,15).map(r=>fetch(r.languages_url).then(x=>x.json()).catch(()=>({})));
+    const results = await Promise.all(langFetches);
+    results.forEach(obj=>{ Object.entries(obj).forEach(([l,b])=>{ langBytes[l]=(langBytes[l]||0)+b; }); });
+
+    if(Object.keys(langBytes).length===0){
+      sc.innerHTML = '<div class="lang-grid"><div class="lang-bar"><div class="lang-dot" style="background:#3572A5"></div><span class="lang-name">Python</span></div><div class="lang-bar"><div class="lang-dot" style="background:#e34c26"></div><span class="lang-name">HTML</span></div><div class="lang-bar"><div class="lang-dot" style="background:#563d7c"></div><span class="lang-name">CSS</span></div></div><p style="margin-top:16px;font-size:12px;color:var(--muted)">Push more repos to GitHub and your real languages will appear here.</p>';
+    } else {
+      const sorted = Object.entries(langBytes).sort((a,b)=>b[1]-a[1]);
+      const total = sorted.reduce((s,[,v])=>s+v,0);
+      sc.innerHTML = '<div class="lang-grid">' + sorted.map(([l,b])=>{
+        const pct = ((b/total)*100).toFixed(1);
+        return `<div class="lang-bar"><div class="lang-dot" style="background:${getColor(l)}"></div><span class="lang-name">${l}</span><span class="lang-pct">${pct}%</span></div>`;
+      }).join('') + '</div><p style="margin-top:16px;font-size:12px;color:var(--muted)">Based on code across all your public GitHub repositories.</p>';
+    }
+  } catch(e){
+    document.getElementById('projects-container').innerHTML='<div class="err">Could not load GitHub data. Make sure your repositories are public.</div>';
+    document.getElementById('skills-container').innerHTML='<div class="err">Could not load language data.</div>';
+  }
+}
+
+init();
+
+const obs = new IntersectionObserver(entries=>entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('visible'); }),{threshold:0.08});
+document.querySelectorAll('section').forEach(s=>obs.observe(s));
+</script>
 </body>
 </html>
